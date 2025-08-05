@@ -1,0 +1,52 @@
+{
+  "name": "artifex-ai-fullstack",
+  "version": "1.0.0",
+  "description": "Artifex AI MERN Stack Application deployed on Vercel",
+  "main": "api/index.js", // Crucial: This tells Vercel where your backend serverless function is
+  "scripts": {
+    "start:client": "npm start --prefix client",
+    "start:server": "node api/index.js", // For local testing of the serverless function
+    "dev": "concurrently \"npm run start:client\" \"npm run start:server\"",
+    "build:client": "npm run build --prefix client"
+  },
+  "dependencies": {
+    // --- Backend Dependencies (ESSENTIAL for your api/index.js) ---
+    "express": "^4.18.2",
+    "mongoose": "^8.0.0",
+    "dotenv": "^16.0.0",
+    "cors": "^2.8.5",
+    "jsonwebtoken": "^9.0.0",
+    "stripe": "^14.0.0", // The Node.js Stripe library for your backend
+    "clipdrop": "^1.0.0", // Assuming this is the correct package for Clipdrop API on backend
+    "bcryptjs": "^2.4.3", // Common for password hashing in MERN, add if you use it
+    // Add any other backend-specific dependencies your server/controllers/routes use
+
+    // --- Frontend Dependencies (Moved from client/package.json for Vercel's root build) ---
+    // Vercel's build process for monorepos often benefits from having all dependencies at the root
+    "@tailwindcss/vite": "^4.1.11",
+    "axios": "^1.10.0",
+    "motion": "^12.20.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.3",
+    "react-toastify": "^11.0.5",
+    "@stripe/stripe-js": "^1.8.0" // Your Stripe JS library for the frontend
+  },
+  "devDependencies": {
+    // --- Development Dependencies (for local setup) ---
+    "@eslint/js": "^9.29.0",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.5.2",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.29.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.2.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "vite": "^7.0.0",
+    "concurrently": "^8.0.0", // For running client and server concurrently locally
+    "nodemon": "^3.0.0" // For auto-restarting server locally
+  }
+}
